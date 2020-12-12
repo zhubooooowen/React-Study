@@ -6,13 +6,18 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { ConfigProvider } from 'antd';
+import 'moment/locale/zh-cn';
+import locale from 'antd/lib/locale/zh_CN';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+      <ConfigProvider locale={locale}>
+        <Router>
+          <App />
+        </Router>
+      </ConfigProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
