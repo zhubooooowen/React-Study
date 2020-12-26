@@ -37,8 +37,10 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
     loading,
     dataSource,
     getFilter,
+    getPagination,
     rowKey,
-    initialValue
+    searchParams,
+    pagination
   } = props
 
   const hideColumnsArr: Array<any> = columns.filter((item: any) => item.isHide)
@@ -47,7 +49,6 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
   const [checkedList, setCheckedList] = useState<Array<string>>([])
   const [checkAll, setCheckAll] = useState<boolean>(false)
   const [indeterminate, setIndeterminate] = useState<boolean>(false)
-  const [params, setParams] = useState<any>({})
 
   useEffect(() => {
     setRenderColumns(cloneDeep(columns).filter((item: any) => !item.isHide))
@@ -91,11 +92,10 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
   }
 
   const tableChange = (pagination: any) => {
-    getFilter({ ...params, page: pagination.current, perpage: pagination.pageSize })
+    getPagination({ current: pagination.current, pageSize: pagination.pageSize, total: pagination.total})
   }
 
   const onSearch = (params: any) => {
-    setParams(params)
     getFilter(params)
   }
 
@@ -104,14 +104,12 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
     // 筛选项有的，表格必须有
     const copyRenderColumns = cloneDeep(renderColumns)
     const columnsKey = copyRenderColumns.filter((column: any) => column.key).map((column: any) => column.key)
-    console.log(renderFilterArr, columnsKey)
     renderFilterArr.forEach((item: any) => {
       if (!columnsKey.includes(item.name)) {
         const column = columns.filter((column: any) => column.key === item.name)[0]
         column && copyRenderColumns.push(column)
       }
     })
-    console.log(copyRenderColumns)
     const arr: any = []
     columns.forEach((column: any) => {
       copyRenderColumns.forEach((item: any) => {
@@ -130,7 +128,7 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
         onSearch={onSearch}
         filterRender={getFilterRender}
         myRef={props.myRef}
-        initialValue={initialValue}
+        searchParams={searchParams}
       />
       <StyledContainer>
         <div className="title">
@@ -142,7 +140,7 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
         <Table
           bordered
           columns={renderColumns}
-          pagination={{ pageSize: 3, total: dataSource.length, current: 1 }}
+          pagination={pagination}
           dataSource={dataSource}
           onChange={tableChange}
           loading={loading}

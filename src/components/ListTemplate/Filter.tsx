@@ -37,12 +37,12 @@ interface Iprops {
   onSearch: any
   filterRender: any
   myRef: any
-  initialValue: any
+  searchParams: any
 }
 
 const Filter: React.FC<Iprops> = (props: Iprops) => {
 
-  const { filterArr, onSearch, filterRender, initialValue } = props
+  const { filterArr, onSearch, filterRender, searchParams } = props
   const [renderFilterArr, setRenderFilterArr] = useState<Array<any>>([])
   const [visible, setVisible] = useState<boolean>(false)
   const [checkedList, setCheckedList] = useState<Array<string>>([])
@@ -101,7 +101,7 @@ const Filter: React.FC<Iprops> = (props: Iprops) => {
       case 'RangePicker':
         return (
           <RangePicker
-            style={{ width: item.showTime ? 280 : 220 }}
+            style={{ width: item.showTime ? 300 : 240 }}
             showTime={item.showTime ? { format: 'HH:mm' } : false}
             format={item.format || 'YYYY-MM-DD'}
             disabledDate={item.disabledDate || null}
@@ -136,7 +136,6 @@ const Filter: React.FC<Iprops> = (props: Iprops) => {
   }
 
   const handleSearch = (fieldsValue: any) => {
-    console.log(fieldsValue)
     const params: any = {}
     renderFilterArr.forEach(item => {
       const { name, type, format, filterName } = item
@@ -244,7 +243,7 @@ const Filter: React.FC<Iprops> = (props: Iprops) => {
           </Row>
         </CheckboxGroup>
       </Modal>
-      <Form className="ant-advanced-search-form" form={form} ref={props.myRef} onFinish={handleSearch} initialValues={initialValue}>
+      <Form className="ant-advanced-search-form" form={form} ref={props.myRef} onFinish={handleSearch} initialValues={searchParams}>
         <FormWrapper>
           {getFields(renderFilterArr)}
           <FormItemWrapper floatDirection="right" margin="0">

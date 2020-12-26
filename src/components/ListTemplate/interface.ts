@@ -30,9 +30,11 @@ export interface Iprops {
   loading: boolean // 表格加载 loading
   dataSource: any[] // 表格数据
   getFilter: (params: object) => void // 获取筛选数据
+  getPagination: (params: object) => void // 获取筛选数据
   isShowExport?: boolean // 是否支持导出
   handleExport?: (params:any) => void // 导出方法
   myRef: any // 获取筛选表单ref
   rowKey: string // 表格的key
-  initialValue: any // 筛选表格默认值，同 antd 用法
+  searchParams: any // 筛选表格数据
+  pagination: any // 分页数据
 }
