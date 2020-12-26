@@ -3,7 +3,6 @@ import { Form, Input, Button, Select, DatePicker, Row, Col, Modal, Checkbox, mes
 import { IconfigArr } from './interface'
 import styled from 'styled-components';
 import { cloneDeep } from 'lodash';
-import moment from "moment";
 import { FormWrapper, FormItemWrapper } from "@components/FormWrapperStyles";
 
 const { RangePicker, MonthPicker } = DatePicker
@@ -38,11 +37,12 @@ interface Iprops {
   onSearch: any
   filterRender: any
   myRef: any
+  initialValue: any
 }
 
 const Filter: React.FC<Iprops> = (props: Iprops) => {
 
-  const { filterArr, onSearch, filterRender } = props
+  const { filterArr, onSearch, filterRender, initialValue } = props
   const [renderFilterArr, setRenderFilterArr] = useState<Array<any>>([])
   const [visible, setVisible] = useState<boolean>(false)
   const [checkedList, setCheckedList] = useState<Array<string>>([])
@@ -144,7 +144,7 @@ const Filter: React.FC<Iprops> = (props: Iprops) => {
         if (type === 'DatePicker') {
           params[name] = fieldsValue[name] ? fieldsValue[name].format(format || 'YYYYMMDD') : undefined
         }
-        if (type === 'RangePicker' && filterName) {
+        if (type === 'RangePicker' && filterName && fieldsValue[name]) {
           params[filterName[0]] = fieldsValue[name][0].format(format || 'YYYYMMDD')
           params[filterName[1]] = fieldsValue[name][1].format(format || 'YYYYMMDD')
         }
@@ -244,7 +244,7 @@ const Filter: React.FC<Iprops> = (props: Iprops) => {
           </Row>
         </CheckboxGroup>
       </Modal>
-      <Form className="ant-advanced-search-form" form={form} ref={props.myRef} onFinish={handleSearch}>
+      <Form className="ant-advanced-search-form" form={form} ref={props.myRef} onFinish={handleSearch} initialValues={initialValue}>
         <FormWrapper>
           {getFields(renderFilterArr)}
           <FormItemWrapper floatDirection="right" margin="0">

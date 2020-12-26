@@ -37,7 +37,8 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
     loading,
     dataSource,
     getFilter,
-    rowKey
+    rowKey,
+    initialValue
   } = props
 
   const hideColumnsArr: Array<any> = columns.filter((item: any) => item.isHide)
@@ -129,6 +130,7 @@ const ListTemplate: React.FC<Iprops> = (props: Iprops) => {
         onSearch={onSearch}
         filterRender={getFilterRender}
         myRef={props.myRef}
+        initialValue={initialValue}
       />
       <StyledContainer>
         <div className="title">

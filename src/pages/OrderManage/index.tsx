@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ListTemplate from '@components/ListTemplate';
+import moment from "moment";
 
 
 const { useState, useEffect, useMemo, useRef } = React;
@@ -128,6 +129,7 @@ const OrderManage = (props: IProps) => {
         getFilter={getFilter} // 获取筛选数据
         myRef={myRef}
         rowKey="order_no"
+        initialValue={{ order_no: 1234, create_time: moment(), order_date: [moment(), moment()] }}
       />
     </div>
   );
