@@ -14,6 +14,7 @@ const OrderManage = (props: IProps) => {
   const myRef = useRef<any>(null)
   const orderData = useSelector(selectOrderData)
   const dispatch = useDispatch();
+  const { tableData, searchParams, pagination } = orderData
 
   useEffect(() => {
     const arr = [
@@ -138,9 +139,9 @@ const OrderManage = (props: IProps) => {
         loading={false} // 表格加载数据 loading
         myRef={myRef}
         rowKey="order_no"
-        dataSource={orderData.tableData}
-        searchParams={orderData.searchParams}
-        pagination={orderData.pagination}
+        dataSource={tableData}
+        searchParams={searchParams}
+        pagination={pagination}
         getFilter={getFilter} // 获取筛选数据
         getPagination={getPagination} // 获取分页数据
       />

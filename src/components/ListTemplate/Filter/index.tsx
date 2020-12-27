@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Form, Input, Button, Select, DatePicker, Row, Col, Modal, Checkbox, message } from 'antd'
-import { IconfigArr } from './interface'
+import { IconfigArr } from '../interface'
 import styled from 'styled-components';
 import { cloneDeep } from 'lodash';
 import { FormWrapper, FormItemWrapper } from "@components/FormWrapperStyles";
@@ -12,8 +12,6 @@ const { useState, useEffect } = React;
 
 const FormContainer = styled.div`
   background: #fff;
-  padding: 10px 15px;
-  margin-top: 15px;
   .filterBtn {
     float: right;
     cursor: pointer;

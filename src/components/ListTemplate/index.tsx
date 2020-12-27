@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Fragment } from 'react'
 import { Table, Modal, Checkbox, message, Row, Col } from 'antd'
-import Filter from './Filter'
+import Filter from './Filter/index'
 import { Iprops } from './interface'
 import styled from 'styled-components';
 import { cloneDeep } from 'lodash';

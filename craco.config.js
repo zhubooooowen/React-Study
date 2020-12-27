@@ -9,7 +9,7 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: { '@primary-color': '#1DA57A' },
+            modifyVars: { '@primary-color': '#00a0e9' },
             javascriptEnabled: true,
           },
         },
@@ -26,6 +26,6 @@ module.exports = {
          are specified*/
          tsConfigPath: "./tsconfig.paths.json"
       }
-   }
+    }
   ],
 };
