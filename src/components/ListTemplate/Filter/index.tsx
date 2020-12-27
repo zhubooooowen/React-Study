@@ -15,7 +15,7 @@ const FormContainer = styled.div`
   .filterBtn {
     float: right;
     cursor: pointer;
-    color: #5671b3;
+    color: #00a0e9;
     font-weight: bold;
   }
   .ant-advanced-search-form {

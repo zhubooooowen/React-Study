@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
       cursor: pointer;
       font-weight: bold;
       font-size: 12px;
-      color: #5671b3;
+      color: #00a0e9;
     }
   }
 `;

@@ -133,6 +133,7 @@ const OrderManage = (props: IProps) => {
 
   return (
     <div id="orderManage">
+      <div>列表组件模板，点击查看<a target="_blank" rel="noreferrer" href="https://github.com/zhubooooowen/React-Study#%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A8%A1%E6%9D%BF">配置详情</a></div>
       <ListTemplate
         filterArr={filterArr} // 筛选表单配置
         columns={columns} // 表格 columns
