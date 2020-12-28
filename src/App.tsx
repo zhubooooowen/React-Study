@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import './App.less';
 // HashRouter 打包 不能用 BrowserRouter
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
-import { Breadcrumb } from "antd";
+import { Breadcrumb, Skeleton } from "antd";
 import {
   HomeOutlined
 } from '@ant-design/icons';
@@ -68,7 +68,7 @@ const App: React.FC = () => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>{titleList[0]}</Breadcrumb.Item>
           </Breadcrumb>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Skeleton active />}>
             <Switch>
               {setRoute(routerList)}
               <Redirect from="/" to="/counter" />
