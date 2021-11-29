@@ -3,8 +3,8 @@ import { ColumnProps } from 'antd/es/table';
 
 export interface IconfigArr {
   label: string // 筛选文案
-  name: string | string[] // 用于表单提交
-  filterName?: any // 特殊的筛选 name 定义，比如日期范围筛选
+  name: string // 用于表单提交
+  filterName?: string[] // 特殊的筛选 name 定义，比如日期范围筛选
   type?: string // 组件类型：Input Select DatePicker RangePicker MonthPicker
   placeholder?: string // 表单提示
   selectOption?: any[] // 只用于 Select 的 option
